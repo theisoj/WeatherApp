@@ -1,0 +1,937 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #000000;
+  color: #a1a1a1;
+  font-family: "Poppins", sans-serif;
+}
+
+.loading {
+  filter: blur(16px);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-right: 2px solid #b4b4b4;
+}
+
+.weather-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.weather-icon.large {
+  width: 80px;
+  height: 80px;
+}
+
+.header-current-temp {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.header-right {
+  display: grid;
+  width: 50%;
+  justify-content: space-around;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.6rem;
+  color: #e7e7e7;
+}
+
+.value-sub-info {
+  font-weight: lighter;
+  font-size: 0.75rem;
+}
+
+.day-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 75px);
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #353535;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+
+.day-card-day {
+  font-size: 0.65rem;
+  color: #e7e7e7;
+  margin-top: 0.5rem;
+}
+
+.day-card-temp {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.hour-section {
+  width: 100%;
+  text-align: center;
+  border-spacing: 0;
+}
+
+.hour-row {
+  background-color: #252525;
+}
+
+.hour-row:nth-child(2n) {
+  background-color: #161616;
+}
+
+.hour-row > td {
+  padding: 0.25rem 0.5rem;
+}
+
+.refresh-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.button {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 3rem;
+  background-color: hsl(200, 100%, 10%);
+  color: hsl(200, 100%, 85%);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button:hover {
+  background-color: hsl(200, 100%, 20%);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:active {
+  background-color: hsl(200, 100%, 30%);
+}
+
+@media (max-width: 1920px) {
+  .header-current-temp {
+    font-size: 2.1rem;
+  }
+
+  .day-card-day {
+    font-size: 0.7rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.8rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.6rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.8rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.9rem;
+  }
+
+  .hour-row {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1440px) {
+  .header-current-temp {
+    font-size: 1.9rem;
+  }
+
+  .day-card-day {
+    font-size: 0.6rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.7rem;
+  }
+
+  .button {
+    font-size: 0.8rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.55rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.7rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.8rem;
+  }
+
+  .hour-row {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header-current-temp {
+    font-size: 1.75rem;
+  }
+
+  .day-card-day {
+    font-size: 0.6rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.7rem;
+  }
+
+  .button {
+    font-size: 0.8rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.55rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.7rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.8rem;
+  }
+
+  .hour-row {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .weather-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .weather-icon.large {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+
+  .header-left {
+    border-right: none;
+    border-bottom: 2px solid #b4b4b4;
+    width: 100%;
+  }
+
+  .header-right {
+    width: 100%;
+  }
+
+  .day-section {
+    grid-template-columns: repeat(auto-fit, 50px);
+  }
+
+  .day-card {
+    padding: 0.45rem 0.45rem;
+  }
+
+  .day-card-day {
+    font-size: 0.5rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-current-temp {
+    font-size: 1.5rem;
+  }
+
+  .day-card-day {
+    font-size: 0.45rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.6rem;
+  }
+
+  .button {
+    font-size: 0.75rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.5rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.65rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.75rem;
+  }
+
+  .hour-row {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .header-current-temp {
+    font-size: 1.25rem;
+  }
+
+  .day-card-day {
+    font-size: 0.4rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.55rem;
+  }
+
+  .button {
+    font-size: 0.7rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.45rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.6rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.7rem;
+  }
+
+  .hour-row {
+    font-size: 0.7rem;
+  }
+
+  .weather-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .weather-icon.large {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-current-temp {
+    font-size: 1rem;
+  }
+
+  .day-card {
+    padding: 0.35rem 0.35rem;
+  }
+
+  .day-card-day {
+    font-size: 0.35rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.5rem;
+  }
+
+  .button {
+    font-size: 0.6rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.4rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.55rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+}
+
+@media (max-width: 280px) {
+  .header-current-temp {
+    font-size: 0.9rem;
+  }
+
+  .day-card-day {
+    font-size: 0.3rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.45rem;
+  }
+
+  .button {
+    font-size: 0.5rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.35rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.5rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.6rem;
+  }
+
+  .hour-row {
+    font-size: 0.6rem;
+  }
+
+  .weather-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .weather-icon.large {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-current-temp {
+    font-size: 0.8rem;
+  }
+
+  .day-card {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .day-card-day {
+    font-size: 0.3rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.4rem;
+  }
+
+  .button {
+    font-size: 0.45rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.3rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.45rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.55rem;
+  }
+
+  .hour-row {
+    font-size: 0.55rem;
+  }
+
+  .weather-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .weather-icon.large {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header-current-temp {
+    font-size: 0.7rem;
+  }
+
+  .day-card {
+    padding: 0.2rem 0.2rem;
+  }
+
+  .day-card-day {
+    font-size: 0.25rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.35rem;
+  }
+
+  .button {
+    font-size: 0.4rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.25rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.4rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.5rem;
+  }
+
+  .hour-row {
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 240px) {
+  .header-current-temp {
+    font-size: 0.6rem;
+  }
+
+  .day-card-day {
+    font-size: 0.2rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.3rem;
+  }
+
+  .button {
+    font-size: 0.35rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.2rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.3rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.45rem;
+  }
+
+  .hour-row {
+    font-size: 0.45rem;
+  }
+
+  .weather-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .weather-icon.large {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header-current-temp {
+    font-size: 0.5rem;
+  }
+
+  .day-card {
+    padding: 0.15rem 0.15rem;
+  }
+
+  .day-card-day {
+    font-size: 0.2rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.25rem;
+  }
+
+  .button {
+    font-size: 0.3rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.15rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.2rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+
+  .button {
+    padding: 0.4rem;
+    margin: 0.4rem;
+  }
+
+  .hour-row > td {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .hour-section {
+    font-size: 0.4rem;
+  }
+
+  .hour-row {
+    font-size: 0.4rem;
+  }
+
+  .weather-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .weather-icon.large {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-current-temp {
+    font-size: 0.4rem;
+  }
+
+  .day-card {
+    padding: 0.1rem 0.1rem;
+  }
+
+  .day-card-day {
+    font-size: 0.15rem;
+  }
+
+  .day-card-temp {
+    font-size: 0.2rem;
+  }
+
+  .button {
+    font-size: 0.25rem;
+  }
+
+  .header-left {
+    padding: 0.25rem;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .info-group {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.1rem;
+  }
+
+  .value-sub-info {
+    font-size: 0.15rem;
+  }
+
+  .refresh-button-container {
+    margin: 0.5rem;
+  }
+}
